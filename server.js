@@ -11,11 +11,14 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
+  .connect(
+    DB,
+    //   , {
+    //   useNewUrlParser: true,
+    //   // useCreateIndex: true,
+    //   // useFindAndModify: false,
+    // }
+  )
   .then(() => console.log("DB connection successful!"))
   .catch((err) => {
     console.log("DB connection failed");
