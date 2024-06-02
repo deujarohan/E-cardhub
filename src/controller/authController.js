@@ -40,9 +40,10 @@ exports.register = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
   });
 
-  const url = `${req.protocol}://${req.get("host")}/me`;
-  console.log(url);
-  await new Email(newUser, url).sendWelcome();
+  //below code is used to send welcome email to new user
+  // const url = `${req.protocol}://${req.get("host")}/me`;
+  // console.log(url);
+  // await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
 });
