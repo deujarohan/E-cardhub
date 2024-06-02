@@ -10,19 +10,28 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD,
 );
 
-mongoose
-  .connect(
-    DB,
-    //   , {
-    //   useNewUrlParser: true,
-    //   // useCreateIndex: true,
-    //   // useFindAndModify: false,
-    // }
-  )
-  .then(() => console.log("DB connection successful!"))
-  .catch((err) => {
+//one way to connect mongoose
+const connectDB = async () => {
+  try {
+    const connectionInstance = await mongoose.connect(DB);
+    console.log(
+      `Mongo connected DB host:${connectionInstance.connection.host}`,
+    );
+  } catch (err) {
     console.log("DB connection failed");
-  });
+    process.exit(1);
+  }
+};
+
+connectDB();
+
+//another way to connect mongoose
+// mongoose
+//   .connect(DB)
+//   .then(() => console.log("DB connection successful!"))
+//   .catch((err) => {
+//     console.log("DB connection failed");
+//   });
 
 const app = require("./app");
 const port = process.env.PORT || 8000;
