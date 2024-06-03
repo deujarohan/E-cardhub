@@ -1,8 +1,12 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const userRoute = require("./src/routes/userRoutes");
 const designerRoute = require("./src/routes/designerRoutes");
 const designRoute = require("./src/routes/designRoutes");
 const app = express();
+
+// Middleware to parse cookies
+app.use(cookieParser());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
